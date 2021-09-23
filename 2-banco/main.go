@@ -1,9 +1,17 @@
 package main
 
 import (
-	"/git/learning-golang/2-banco/contas"
 	"fmt"
+	"git/learning-golang/2-banco/contas"
 )
+
+func PagarBoleto(conta verificarConta, valorBoleto float64) {
+	conta.Sacar(valorBoleto)
+}
+
+type verificarConta interface {
+	Sacar(valor float64)
+}
 
 // --
 // PARTE 1
@@ -40,15 +48,26 @@ import (
 // --
 // PARTE 2
 
+// func main() {
+// 	contaDaSilvia := contas.ContaCorrente{"Silvia", 0, 0, 500}
+// 	contaDoPedro := contas.ContaCorrente{"Pedro", 0, 0, 500}
+
+// 	// contaDaSilvia.Sacar(300)
+// 	// contaDaSilvia.Depositar(100)
+// 	// contaDaSilvia.Depositar(200)
+
+// 	contaDaSilvia.Transferir(50, &contaDoPedro)
+
+// 	fmt.Println(contaDaSilvia, contaDoPedro)
+// }
+
+// --
+// PARTE 3
+
 func main() {
-	contaDaSilvia := contas.ContaCorrente{"Silvia", 0, 0, 500}
-	contaDoPedro := contas.ContaCorrente{"Pedro", 0, 0, 500}
+	contaDoDenis := contas.ContaPoupanca{}
+	contaDoDenis.Depositar(100)
+	PagarBoleto(&contaDoDenis, 60)
 
-	// contaDaSilvia.Sacar(300)
-	// contaDaSilvia.Depositar(100)
-	// contaDaSilvia.Depositar(200)
-
-	contaDaSilvia.Transferir(50, &contaDoPedro)
-
-	fmt.Println(contaDaSilvia, contaDoPedro)
+	fmt.Println(contaDoDenis.ObterSaldo())
 }
