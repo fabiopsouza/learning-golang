@@ -1,4 +1,4 @@
-module github.com/fabipereira/learning-golang/4-api
+module github.com/fabiopsouza/learning-golang/4-api
 
 go 1.17
 
