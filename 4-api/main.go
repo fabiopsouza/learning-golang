@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"github.com/fabiopsouza/learning-golang/4-api/database"
 	"github.com/fabiopsouza/learning-golang/4-api/models"
 	"github.com/fabiopsouza/learning-golang/4-api/routes"
 )
@@ -12,6 +13,8 @@ func main() {
 		{Id: 2, Nome: "Nome 2", Historia: "Historia 2"},
 	}
 
+	database.ConectaComBancoDeDados()
+
+	fmt.Println("Starting server...")
 	routes.HandleRequest()
-	fmt.Println("Server started")
 }
